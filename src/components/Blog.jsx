@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 const Blog = ({ index, post }) => {
     return (
         <li className="card flex flex-col border border-gray-300 rounded-lg shadow-lg overflow-hidden">
-            <img src={post.cover} alt="Cover image" className="w-full h-48 object-cover" />
-
             <div className="p-4 flex flex-col gap-4">
+                <img src={post.cover} alt="Cover image" className="w-full h-48 object-cover" />
                 <time dateTime={post.date} className="text-gray-500 text-sm">
                     {new Date(post.date).toLocaleDateString()}
                 </time>
