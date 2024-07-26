@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpdatePostForm from "./UpdatePostForm";
 import { useNotification } from '../context/NotificationContext';
-import path from 'path';
 // const backenUrl = "http://localhost:3000/posts";
 const backenUrl = "https://fullstack-blog-be.onrender.com/posts";
 
@@ -15,7 +14,14 @@ function PostDetailsPage() {
     const { showNotification } = useNotification();
     const { id } = useParams();
     const navigate = useNavigate();
-    const relativePath = path.relative('/opt/render/project/src/public', post.cover);
+
+
+    const fullPath = post.cover;
+
+    const baseDir = '/opt/render/project/src/public';
+
+    const relativePath = fullPath.replace(baseDir, '');
+
 
     useEffect(() => {
         axios

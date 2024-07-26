@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import path from 'path';
 
 const Blog = ({ index, post }) => {
 
-    const relativePath = path.relative('/opt/render/project/src/public', post.cover);
+
+    const fullPath = post.cover;
+
+    const baseDir = '/opt/render/project/src/public';
+
+    const relativePath = fullPath.replace(baseDir, '');
 
     console.log('post', post);
     return (
