@@ -8,6 +8,7 @@ function CreatePostPage() {
     const [author, setAuthor] = useState("");
     const [cover, setCover] = useState("");
     const navigate = useNavigate();
+    const backenUrl = "http://localhost:3000/posts";
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +18,7 @@ function CreatePostPage() {
             return;
         }
         axios
-            .post("http://localhost:3000/posts", { title, content, author, cover })
+            .post(backenUrl, { title, content, author, cover })
             .then(() => {
                 navigate("/");
             })

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpdatePostForm from "./UpdatePostForm";
 import { useNotification } from '../context/NotificationContext';
+const backenUrl = "http://localhost:3000/posts";
 
 
 
@@ -15,7 +16,7 @@ function PostDetailsPage() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/posts/${id}`)
+            .get(`${backenUrl}/${id}`)
             .then((response) => {
                 setPost(response.data);
             })
@@ -24,7 +25,7 @@ function PostDetailsPage() {
 
     const handleDelete = () => {
         axios
-            .delete(`http://localhost:3000/posts/${id}`)
+            .delete(`${backenUrl}/${id}`)
             .then(() => {
                 navigate("/");
                 showNotification('Post deleted successfuly.', 'success');
