@@ -60,11 +60,11 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
             <div>
                 <label className="block text-sm font-medium text-gray-700">Title</label>
                 <input type="text" value={post.title} onChange={handleInputChange} name="title"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    className="mt-1 bg-white block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 />
-                <label className="block text-sm font-medium text-gray-700">Author</label>
+                <label className="block   text-sm font-medium text-gray-700">Author</label>
                 <input type="text" value={post.author} onChange={handleInputChange} name="author"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    className="mt-1 bg-white block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 />
             </div>
             <div>
@@ -73,7 +73,7 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
                     name="content"
                     value={post.content}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    className="mt-1 bg-white  block w-full border border-gray-300 rounded-md shadow-sm p-2"
                     required
                     placeholder="Content"
                 />
@@ -84,11 +84,13 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
                     type="file"
                     name="cover"
                     onChange={handleInputChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    className="mt-1 block bg-white w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    required
                 />
             </div>
-            <button type="submit" className="bg-teal-900 text-white px-4 py-2 rounded">
-                Update Post
+            {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
+            <button type="submit" className="btn btn-outline btn-info text-white" >
+                Add Post
             </button>
         </form>
     );

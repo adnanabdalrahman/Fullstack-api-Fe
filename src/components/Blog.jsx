@@ -15,17 +15,17 @@ const Blog = ({ index, post }) => {
 
 
                 <img src={relativePath} alt="Cover image" className="w-full h-48 object-cover" />
-                <time dateTime={post.date} className="text-gray-500 text-sm">
+                <time dateTime={post.date} className="text-white-500 text-sm">
                     {new Date(post.date).toLocaleDateString()}
                 </time>
-                <h2 className="text-xl font-semibold text-gray-900">
+                <h2 className="text-xl font-semibold text-white-900">
                     {post.title}
                 </h2>
 
-                <h3 className="text-lg text-gray-700">
+                <h3 className="text-lg text-white-700">
                     By {post.author}
                 </h3>
-                <p className="text-gray-800">
+                <p className="text-white-800">
                     {post.content}
                 </p>
                 <div className="pt-4">
