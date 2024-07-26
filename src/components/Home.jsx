@@ -10,7 +10,7 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const { showNotification } = useNotification();
     // const backenUrl = "http://localhost:3000/posts";
-    const backenUrl = "https://fullstack-blog-be.onrender.com";
+    const backenUrl = "https://fullstack-blog-be.onrender.com/posts";
 
     // Function to fetch posts
     const fetchPosts = async () => {
