@@ -86,6 +86,7 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
                     onChange={handleInputChange}
                     className="mt-1 block bg-white w-full border border-gray-300 rounded-md shadow-sm p-2"
                 />
+
             </div>
             <button type="submit" className="btn btn-outline btn-info text-white" >
                 Update Post
