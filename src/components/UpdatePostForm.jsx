@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNotification } from '../context/NotificationContext';
 
 
 
@@ -8,6 +9,7 @@ import { useParams } from "react-router-dom";
 const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
     const [post, setPost] = useState(currentPost);
     const { id } = useParams();
+    const { showNotification } = useNotification();
 
     const handleInputChange = (event) => {  //function to update every the Post state, updating the field that changes
         const { name, value, files } = event.target;
@@ -20,7 +22,7 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
                 }));
 
             } else {
-                setErrorMessage('File is too large or not selected');
+                showNotification('File is too large or not selected.', 'error');
             }
         }
         else {
@@ -40,11 +42,14 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
         axios.put(`http://localhost:3000/posts/${id}`, post)
             .then((response) => {
                 console.log('response', response.data);
-
                 setCurrentPost(response.data.post);
                 closeModal();
+                showNotification('File updated successfully.', 'success');
             })
-            .catch((error) => console.error("Error updating post:", error));
+            .catch((error) => {
+                showNotification('Error updating post.', 'error');
+                console.error("Error updating post:", error)
+            });
     };
 
 
