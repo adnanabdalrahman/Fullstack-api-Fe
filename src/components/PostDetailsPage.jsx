@@ -16,11 +16,7 @@ function PostDetailsPage() {
     const navigate = useNavigate();
 
 
-    const fullPath = post.cover;
 
-    const baseDir = '/opt/render/project/src/public';
-
-    const relativePath = "https://fullstack-blog-be.onrender.com" + fullPath.replace(baseDir, '');
 
 
     useEffect(() => {
@@ -49,7 +45,11 @@ function PostDetailsPage() {
     const [showEditModal, setEditShowModal] = useState(false);
 
     if (!post) return <div>Loading...</div>;
+    const fullPath = post.cover;
 
+    const baseDir = '/opt/render/project/src/public';
+
+    const relativePath = "https://fullstack-blog-be.onrender.com" + fullPath.replace(baseDir, '');
     return (
         <div className="mx-auto p-4 bg-white shadow-lg rounded-lg">
             <Modal show={showEditModal} onClose={() => setEditShowModal(false)}>
