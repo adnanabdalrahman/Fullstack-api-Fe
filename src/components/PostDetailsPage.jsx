@@ -4,7 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpdatePostForm from "./UpdatePostForm";
 import { useNotification } from '../context/NotificationContext';
-const backenUrl = "http://localhost:3000/posts";
+// const backenUrl = "http://localhost:3000/posts";
+const backenUrl = "https://fullstack-blog-be.onrender.com";
 
 
 
