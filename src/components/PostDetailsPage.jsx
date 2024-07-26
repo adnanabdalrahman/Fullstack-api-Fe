@@ -20,7 +20,7 @@ function PostDetailsPage() {
 
     const baseDir = '/opt/render/project/src/public';
 
-    const relativePath = fullPath.replace(baseDir, '');
+    const relativePath = "https://fullstack-blog-be.onrender.com" + fullPath.replace(baseDir, '');
 
 
     useEffect(() => {

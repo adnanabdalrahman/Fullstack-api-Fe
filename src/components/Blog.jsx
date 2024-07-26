@@ -7,8 +7,7 @@ const Blog = ({ index, post }) => {
 
     const baseDir = '/opt/render/project/src/public';
 
-    const relativePath = fullPath.replace(baseDir, '');
-
+    const relativePath = "https://fullstack-blog-be.onrender.com" + fullPath.replace(baseDir, '');
     console.log('post', post);
     return (
         <li className="card flex flex-col border border-gray-300 rounded-lg shadow-lg overflow-hidden">
