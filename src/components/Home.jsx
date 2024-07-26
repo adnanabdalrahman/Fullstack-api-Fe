@@ -9,7 +9,8 @@ import { useNotification } from '../context/NotificationContext';
 function Home() {
     const [posts, setPosts] = useState([]);
     const { showNotification } = useNotification();
-    const backenUrl = "http://localhost:3000/posts";
+    // const backenUrl = "http://localhost:3000/posts";
+    const backenUrl = "https://fullstack-blog-be.onrender.com";
 
     // Function to fetch posts
     const fetchPosts = async () => {

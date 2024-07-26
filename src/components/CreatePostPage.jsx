@@ -8,7 +8,8 @@ function CreatePostPage() {
     const [author, setAuthor] = useState("");
     const [cover, setCover] = useState("");
     const navigate = useNavigate();
-    const backenUrl = "http://localhost:3000/posts";
+    // const backenUrl = "http://localhost:3000/posts";
+    const backenUrl = "https://fullstack-blog-be.onrender.com";
 
     const handleSubmit = (e) => {
         e.preventDefault();
