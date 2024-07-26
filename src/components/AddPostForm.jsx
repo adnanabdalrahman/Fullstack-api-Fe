@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-const AddPostForm = ({ closeModal, setPosts, currentPost }) => {
+import { useNotification } from '../context/NotificationContext';
 
+const AddPostForm = ({ fetchPosts, closeModal, setMessage, currentPost }) => {
+  const { showNotification } = useNotification();
   const [post, setPost] = useState(currentPost ? currentPost :
     {
       title: '',
@@ -57,7 +59,8 @@ const AddPostForm = ({ closeModal, setPosts, currentPost }) => {
       .then(() => {
         closeModal();
         setPost({ title: '', content: '', author: '', cover: '' });
-        setPosts((prevPosts) => [...prevPosts, post]);
+        fetchPosts();
+        showNotification('Operation was successful!', 'success');
       })
       .catch((error) => console.error("Error creating post:", error));
   };

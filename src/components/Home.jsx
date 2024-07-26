@@ -4,11 +4,13 @@ import { Link, useOutletContext } from "react-router-dom";
 import Blog from "./Blog";
 import Modal from "./Modal";
 import AddPostForm from "./AddPostForm";
-
+import { useNotification } from '../context/NotificationContext';
 
 function Home() {
     const [posts, setPosts] = useState([]);
-    useEffect(() => {
+    const { showNotification } = useNotification();
+    // Function to fetch posts
+    const fetchPosts = async () => {
         axios
             .get("http://localhost:3000/posts")
             .then((response) => {
@@ -16,6 +18,10 @@ function Home() {
                 setPosts(response.data)
             })
             .catch((error) => console.error("Error fetching posts:", error));
+    };
+
+    useEffect(() => {
+        fetchPosts();
     }, []);
 
     const { showAddModal, setAddShowModal } = useOutletContext();
@@ -24,7 +30,7 @@ function Home() {
         <>
             <Modal show={showAddModal} onClose={() => setAddShowModal(false)}>
                 <h2 className="text-xl font-bold mb-4">Add Post</h2>
-                <AddPostForm closeModal={() => setAddShowModal(false)} setPosts={setPosts} />
+                <AddPostForm fetchPosts={fetchPosts} closeModal={() => setAddShowModal(false)} setPosts={setPosts} />
             </Modal>
             <ul className="posts pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {posts.map((post, index) => (

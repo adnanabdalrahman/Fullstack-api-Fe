@@ -3,15 +3,13 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpdatePostForm from "./UpdatePostForm";
+import { useNotification } from '../context/NotificationContext';
+
+
 
 function PostDetailsPage() {
     const [post, setPost] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editedTitle, setEditedTitle] = useState("");
-    const [editedContent, setEditedContent] = useState("");
-
-
-
+    const { showNotification } = useNotification();
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -20,8 +18,6 @@ function PostDetailsPage() {
             .get(`http://localhost:3000/posts/${id}`)
             .then((response) => {
                 setPost(response.data);
-                setEditedTitle(response.data.title);
-                setEditedContent(response.data.content);
             })
             .catch((error) => console.error("Error fetching post:", error));
     }, [id]);
@@ -29,8 +25,14 @@ function PostDetailsPage() {
     const handleDelete = () => {
         axios
             .delete(`http://localhost:3000/posts/${id}`)
-            .then(() => navigate("/"))
-            .catch((error) => console.error("Error deleting post:", error));
+            .then(() => {
+                navigate("/");
+                showNotification('Post deleted successfuly.', 'success');
+            })
+            .catch((error) => {
+                showNotification('Error deleting post.', 'error');
+                console.error("Error deleting post:", error)
+            });
     };
 
 
@@ -39,22 +41,34 @@ function PostDetailsPage() {
     if (!post) return <div>Loading...</div>;
 
     return (
-        <div>
+        <div className="mx-auto p-4 bg-white shadow-lg rounded-lg">
             <Modal show={showEditModal} onClose={() => setEditShowModal(false)}>
                 <h2 className="text-xl font-bold mb-4">Update Post</h2>
                 <UpdatePostForm closeModal={() => setEditShowModal(false)} currentPost={post} setCurrentPost={setPost} />
             </Modal>
-            <h1>{post.title}</h1>
             <img
                 src={post.cover}
                 alt={post.title}
-                style={{ maxWidth: "400px" }}
+                className="w-full max-w-lg mx-auto mb-4 rounded-lg shadow-md"
             />
-            <p>{post.content}</p>
-            <p>Author: {post.author}</p>
-            <p>Date: {new Date(post.date).toLocaleDateString()}</p>
-            <button className="btn btn-primary mr-5" onClick={() => setEditShowModal(true)}>Edit</button>
-            <button className="btn btn-error" onClick={handleDelete}>Delete</button>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">{post.title}</h1>
+            <p className="text-lg text-gray-700 mb-4">{post.content}</p>
+            <p className="text-sm text-gray-600 mb-2">Author: {post.author}</p>
+            <p className="text-sm text-gray-600">Date: {new Date(post.date).toLocaleDateString()}</p>
+            <div className="mt-6 flex space-x-4">
+                <button
+                    className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    onClick={() => setEditShowModal(true)}
+                >
+                    Edit
+                </button>
+                <button
+                    className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    onClick={handleDelete}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     );
 }
