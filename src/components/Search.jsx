@@ -6,4 +6,4 @@ const Search = () => {
     );
   };
   
-  export default Search;  // Don't forget to export the component!
+  export default Search;

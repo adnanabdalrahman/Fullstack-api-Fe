@@ -10,7 +10,7 @@ export const NotificationProvider = ({ children }) => {
 
     const showNotification = (message, type = 'info') => {
         setNotification({ message, type });
-        // Auto-dismiss handled by Notification component
+       
     };
 
     return (

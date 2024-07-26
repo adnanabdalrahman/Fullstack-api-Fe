@@ -13,11 +13,11 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
     const { id } = useParams();
     const { showNotification } = useNotification();
 
-    const handleInputChange = (event) => {  //function to update every the Post state, updating the field that changes
+    const handleInputChange = (event) => {  
         const { name, value, files } = event.target;
         if (name === 'cover') {
             const selectedFile = files[0];
-            if (selectedFile && selectedFile.size < 2000000) { // Check file size (e.g., < 2MB)
+            if (selectedFile && selectedFile.size < 2000000) { 
                 setPost(prevState => ({
                     ...prevState,
                     cover: selectedFile

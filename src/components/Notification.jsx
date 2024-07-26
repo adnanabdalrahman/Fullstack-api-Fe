@@ -7,7 +7,7 @@ const Notification = ({ message, type, onClose }) => {
                 onClose();
             }, 2000);
 
-            return () => clearTimeout(timer); // Clean up the timer on unmount
+            return () => clearTimeout(timer); 
         }
     }, [message, onClose]);
 
