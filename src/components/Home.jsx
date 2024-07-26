@@ -9,10 +9,12 @@ import { useNotification } from '../context/NotificationContext';
 function Home() {
     const [posts, setPosts] = useState([]);
     const { showNotification } = useNotification();
+    const backenUrl = "http://localhost:3000/posts";
+
     // Function to fetch posts
     const fetchPosts = async () => {
         axios
-            .get("http://localhost:3000/posts")
+            .get(backenUrl)
             .then((response) => {
                 console.log(response.data)
                 setPosts(response.data)

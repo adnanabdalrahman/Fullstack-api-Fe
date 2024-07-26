@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNotification } from '../context/NotificationContext';
 
+const backenUrl = "http://localhost:3000/posts";
 
 
 
@@ -39,7 +40,7 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
     const handleUpdate = (e) => {
         e.preventDefault();
         console.log('post', post);
-        axios.put(`http://localhost:3000/posts/${id}`, post)
+        axios.put(`${backenUrl}/${id}`, post)
             .then((response) => {
                 console.log('response', response.data);
                 setCurrentPost(response.data.post);
