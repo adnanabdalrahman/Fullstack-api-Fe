@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useNotification } from '../context/NotificationContext';
 
 // const backenUrl = "http://localhost:3000/posts";
-const backenUrl = "https://fullstack-blog-be.onrender.com";
+const backenUrl = "https://fullstack-blog-be.onrender.com/posts";
 
 
 
