@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpdatePostForm from "./UpdatePostForm";
 import { useNotification } from '../context/NotificationContext';
+import path from 'path';
 // const backenUrl = "http://localhost:3000/posts";
 const backenUrl = "https://fullstack-blog-be.onrender.com/posts";
 
@@ -14,6 +15,7 @@ function PostDetailsPage() {
     const { showNotification } = useNotification();
     const { id } = useParams();
     const navigate = useNavigate();
+    const relativePath = path.relative('/opt/render/project/src/public', post.cover);
 
     useEffect(() => {
         axios
@@ -49,7 +51,7 @@ function PostDetailsPage() {
                 <UpdatePostForm closeModal={() => setEditShowModal(false)} currentPost={post} setCurrentPost={setPost} />
             </Modal>
             <img
-                src={post.cover}
+                src={relativePath}
                 alt={post.title}
                 className="w-full max-w-lg mx-auto mb-4 rounded-lg shadow-md"
             />
