@@ -85,12 +85,10 @@ const UpdatePostForm = ({ closeModal, currentPost, setCurrentPost }) => {
                     name="cover"
                     onChange={handleInputChange}
                     className="mt-1 block bg-white w-full border border-gray-300 rounded-md shadow-sm p-2"
-                    required
                 />
             </div>
-            {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
             <button type="submit" className="btn btn-outline btn-info text-white" >
-                Add Post
+                Update Post
             </button>
         </form>
     );
