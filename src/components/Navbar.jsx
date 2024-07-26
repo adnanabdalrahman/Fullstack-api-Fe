@@ -8,9 +8,12 @@ const Navbar = ({ setAddShowModal }) => {
                 <Link to="/" className="btn btn-outline btn-info text-white">
                     Blogs
                 </Link>
-                <div className="flex space-x-4">
-                    <button className="btn btn-outline btn-info text-white" onClick={() => setAddShowModal(() => true)}>Add Post</button>
+                <div className="flex-grow text-center">
+                    <h1 className="text-2xl font-bold text-white">Welcome to our Full-Stack-Blog</h1>
                 </div>
+                <button className="btn btn-outline btn-info text-white" onClick={() => setAddShowModal(() => true)}>
+                    Add Post
+                </button>
             </div>
         </nav >
     );
