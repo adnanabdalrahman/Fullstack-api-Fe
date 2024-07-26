@@ -11,6 +11,7 @@ const AddPostForm = ({ fetchPosts, closeModal, setMessage, currentPost }) => {
       author: '',
       cover: null,
     });
+  const backenUrl = "https://fullstack-blog-be.onrender.com/posts";
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleInputChange = (event) => {  //function to update every the Post state, updating the field that changes
@@ -46,7 +47,7 @@ const AddPostForm = ({ fetchPosts, closeModal, setMessage, currentPost }) => {
     formData.append('content', post.content);
     formData.append('author', post.author);
 
-    axios.post("http://localhost:3000/posts", formData,
+    axios.post(backenUrl, formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
