@@ -7,9 +7,9 @@ const Navbar = ({ setAddShowModal }) => {
             <div className="container mx-auto flex justify-between items-center">
                 <Link to="/" className="text-white text-lg font-bold">
                     <button className="btn btn-outline btn-info text-white">
-                    Blogs
+                        Blogs
                     </button>
-                    
+
                 </Link>
                 <div className="flex space-x-4">
                     <button className="btn btn-outline btn-info text-white" onClick={() => setAddShowModal(() => true)}>Add Post</button>
